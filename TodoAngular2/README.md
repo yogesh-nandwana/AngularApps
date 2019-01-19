@@ -86,7 +86,7 @@ rd e2e /s /q
 ```
 
 ### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
+You could [start writing code](start-development) now and throw it all away when you're done.
 If you'd rather preserve your work under source control, consider taking the following steps.
 
 Initialize this project as a *local git repo* and make the first commit:
