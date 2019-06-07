@@ -1,0 +1,7 @@
+<div>
+  <app-searchtodo (searchTodoEvtEmitter)="searchTodo($event)"></app-searchtodo> 
+  <app-todo *ngFor="let todo of todos" [todo]='todo' 
+    (delTodoEvtEmitter)="deleteTodo($event)">     
+  </app-todo>
+  <app-addtodo (addTodoEvtEmitter)="addTodo($event)"></app-addtodo>
+</div>
