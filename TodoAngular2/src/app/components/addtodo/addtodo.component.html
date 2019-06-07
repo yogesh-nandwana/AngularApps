@@ -1,0 +1,15 @@
+<form class="form" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>           
+            <div class="col-md-4" style="text-align: start">
+                <input type="text" required name="todoTxt" [(ngModel)]="todoTxt" 
+                (change)="onChange()" placeholder="Enter todo to add..." />
+            </div>
+            <div class="col-md-4" style="text-align: start">
+                <button [disabled]="!addBttnEnableFlag" class="btn">Add</button>
+            </div>
+        </div>
+    </div>
+</form>
