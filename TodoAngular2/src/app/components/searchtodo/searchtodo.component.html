@@ -1,0 +1,12 @@
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-4" style="text-align: end">
+    </div>
+    <div class="col-md-4" style="text-align: center">
+        <input type="text" name="todoToSearch" [(ngModel)]='todoToSearch' 
+         (focusout)="searchTodo(todoToSearch)" placeholder="Enter todo to search..." />        
+    </div>
+    <div class="col-md-4" style="text-align: start"></div>
+  </div>
+</div>
