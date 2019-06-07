@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row" [ngClass]="setClasses()">
+    <div class="col-md-4" style="text-align:start"></div>
+    <div class="col-md-4" style="text-align:start">
+      #{{todo.id}}
+      <input type="checkbox" (change)="onToggle(todo)"/>
+      {{todo.text}}
+    </div>
+    <div class="col-md-4" style="text-align:start">
+        <button (click)="onDelete(todo)" class="del">X</button>
+    </div>
+  </div>
+</div>
