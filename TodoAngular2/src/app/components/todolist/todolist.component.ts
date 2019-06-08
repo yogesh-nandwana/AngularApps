@@ -14,26 +14,30 @@ export class TodolistComponent implements OnInit {
   constructor(private todoService:TodoService) {}
 
   ngOnInit() {
-    this.todos = this.todoService.getTodos();
+     this.todoService.getTodos().subscribe(todos => {this.todos = todos;});
     this.copyTodos = Object.assign([],this.todos);
   }
 
   deleteTodo(todo:Todo) {
-    console.log("Todo to delete:"+todo.text);
-    let filteredTdos = this.todos.filter(t => t.id !== todo.id);
+    //delete from UI
+    let filteredTdos = this.todos.filter(t => t.id === todo.id);
     this.todos.splice(this.todos.indexOf(filteredTdos[0]),1);
     this.copyTodos = Object.assign([],this.todos);
+    //delete from server
+    this.todoService.deleteTodo(todo).subscribe();
   }
 
   addTodo(todo:Todo) {
-    if(todo.text.trim().length>0){
-       todo.id = this.getNextTodoSrNo();
-        if(!this.isDuplicateTodo(todo)){
-          this.todos.push(todo);
-        }else{
-          console.warn("duplicate todo:"+todo.text);
-        }
-        this.copyTodos = Object.assign([],this.todos);
+    if(todo.title.trim().length>0){
+      if(!this.isDuplicateTodo(todo)){
+       // todo.id = this.getNextTodoSrNo();
+        this.todoService.addTodo(todo).subscribe(todo => {
+            this.todos.push(todo)
+            this.copyTodos.push(todo);
+        });
+      }else{
+        console.warn("Duplicate todo!");
+      }           
     }else{
       console.warn("Invalid todo!");
     }
@@ -44,7 +48,7 @@ export class TodolistComponent implements OnInit {
     let searchedTodos = [];
     if(todoToSearch!=undefined && todoToSearch.trim().length > 0){
       let found = this.copyTodos.filter(function(t){
-        if(t.text.indexOf(todoToSearch)!=-1){
+        if(t.title.indexOf(todoToSearch)!=-1){
           return t;
         }
       });
@@ -57,20 +61,20 @@ export class TodolistComponent implements OnInit {
 
   isDuplicateTodo(todo){
     let found = this.todos.filter(function(t){
-      if(t.text === todo.text){
+      if(t.title === todo.title){
         return todo;
       }
     });
     return found.length>0;
   }
 
-  getNextTodoSrNo() {
-    let maxSrNo = 0;
-    this.todos.forEach(function(t){
-      if(t.id>maxSrNo) {
-         maxSrNo = t.id;
-      }
-    });
-    return maxSrNo+1;
-  }
+  // getNextTodoSrNo() {
+  //   let maxSrNo = 0;
+  //   this.todos.forEach(function(t){
+  //     if(t.id>maxSrNo) {
+  //        maxSrNo = t.id;
+  //     }
+  //   });
+  //   return maxSrNo+1;
+  // }
 }
