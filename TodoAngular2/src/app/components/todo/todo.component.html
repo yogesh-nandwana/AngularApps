@@ -4,7 +4,7 @@
     <div class="col-md-4" style="text-align:start">
       #{{todo.id}}
       <input type="checkbox" (change)="onToggle(todo)"/>
-      {{todo.text}}
+      {{todo.title}}
     </div>
     <div class="col-md-4" style="text-align:start">
         <button (click)="onDelete(todo)" class="del">X</button>
