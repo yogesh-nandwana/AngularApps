@@ -18,7 +18,7 @@ export class AddtodoComponent implements OnInit {
   ngOnInit() {} 
 
   onSubmit(){
-    const todo = {id:0,text: this.todoTxt.trim(),completed: false};
+    const todo = {id:0,title: this.todoTxt.trim(),completed: false};
     this.addTodoEvtEmitter.emit(todo);
   }
 
