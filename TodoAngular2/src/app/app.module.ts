@@ -11,6 +11,7 @@ import { AddtodoComponent } from './components/addtodo/addtodo.component';
 import { SearchtodoComponent } from './components/searchtodo/searchtodo.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AddtodoComponent,
     SearchtodoComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
    
   ],
   imports: [
